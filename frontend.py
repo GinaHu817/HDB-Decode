@@ -49,7 +49,7 @@ st.markdown(
 
 
 
-logo_path = "photo_2025-03-14 13.13.14.jpeg"  
+logo_path = "photo.jpeg"  
 
 def get_image_base64(image_path):
     with open(image_path, "rb") as img_file:
