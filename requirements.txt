@@ -2,5 +2,8 @@ streamlit
 pandas
 numpy
 seaborn
+folium
+streamlit-folium
 matplotlib
 scikit-learn
+plotly
