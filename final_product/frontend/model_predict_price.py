@@ -31,7 +31,7 @@ def normalize_column(value, col):
 ONEMAP_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1M2M4NGU0YmJlMWVlZDhmMDczNDk4ODVmZDExYWRjOSIsImlzcyI6Imh0dHA6Ly9pbnRlcm5hbC1hbGItb20tcHJkZXppdC1pdC1uZXctMTYzMzc5OTU0Mi5hcC1zb3V0aGVhc3QtMS5lbGIuYW1hem9uYXdzLmNvbS9hcGkvdjIvdXNlci9wYXNzd29yZCIsImlhdCI6MTc0Mzc1ODAyNSwiZXhwIjoxNzQ0MDE3MjI1LCJuYmYiOjE3NDM3NTgwMjUsImp0aSI6IkF6YWZjWGxDb2tNb0hmQ1AiLCJ1c2VyX2lkIjozNTA0LCJmb3JldmVyIjpmYWxzZX0.CMD124pML3xaJU45AklBASBYNmojp_wctKoRupiDkQ0"
 
 
-with open('../data/raw/planning_area.json') as f:
+with open('planning_area.json') as f:
     planning_areas = json.load(f)['SearchResults']
 
 def get_coordinates_from_postal(postal_code):
