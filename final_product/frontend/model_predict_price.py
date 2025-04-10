@@ -5,7 +5,7 @@ import json
 import geopandas as gpd
 from math import radians, cos, sin, sqrt, atan2
 
-df_resale = pd.read_csv("../data/cleaned/resale_price_cleaned.csv")
+df_resale = pd.read_csv("resale_price_cleaned.csv")
 
 df_resale = df_resale.drop(columns=["town"])
 
@@ -63,8 +63,8 @@ def get_planning_area_from_postal(postal_code):
         return "Invalid postal code"
     return get_planning_area_from_point(lat, lon, planning_areas)
 
-bus_stops = gpd.read_file("../data/raw/BusStopLocation_Nov2024/BusStop.shp")
-MRT_stops = pd.read_csv("../data/raw/MRT Stations.csv")
+bus_stops = gpd.read_file("BusStopLocation_Nov2024/BusStop.shp")
+MRT_stops = pd.read_csv("MRT Stations.csv")
 
 
 def haversine(lat1, lon1, lat2, lon2):
@@ -113,15 +113,15 @@ def get_nearest_distances(lat, lon):
 def get_amenity_score(hdb_lat, hdb_lon, amenity_type):
  
     if amenity_type == "education":
-        df = pd.read_csv("../data/raw/Amenities_school.csv")
+        df = pd.read_csv("Amenities_school.csv")
     elif amenity_type == "healthcare":
-        df = pd.read_csv("../data/raw/Amenities_healthcare.csv")
+        df = pd.read_csv("Amenities_healthcare.csv")
     elif amenity_type == "shopping":
-        df = pd.read_csv("../data/raw/Amenities_shopping.csv")
+        df = pd.read_csv("Amenities_shopping.csv")
     elif amenity_type == "food":
-        df = pd.read_csv("../data/raw/Amenities_food.csv")
+        df = pd.read_csv("Amenities_food.csv")
     elif amenity_type == "recreation":
-        df = pd.read_csv("../data/raw/Amenities_recreation.csv")
+        df = pd.read_csv("Amenities_recreation.csv")
     else:
         raise ValueError(f"Unsupported amenity type: {amenity_type}")
 
@@ -138,7 +138,7 @@ def get_amenity_score(hdb_lat, hdb_lon, amenity_type):
 
 def get_religion (town):
     # religion
-    df_religion = pd.read_csv("../data/raw/religion_2020.csv")
+    df_religion = pd.read_csv("religion_2020.csv")
     df_religion.rename(columns = {"Number":"town"}, inplace = True)
     df_religion['town'] = df_religion['town'].replace('Kallang', 'Kallang/Whampoa')
     # Combine 'Outram', 'Downtown Core', 'River Valley', 'Novena' into 'Central Area'
@@ -177,7 +177,7 @@ def get_religion (town):
 def get_income (town):
     
     # avg household income
-    df_income = pd.read_csv("../data/cleaned/resale_price_cleaned.csv")
+    df_income = pd.read_csv("resale_price_cleaned.csv")
     df_income = df_income[df_income['month'] == '2024-12']
     df_income = df_income[['town', 'avg_household_income']]
     df_income = df_income.drop_duplicates()
@@ -193,7 +193,7 @@ def get_income (town):
     return df
 
 
-df_income = pd.read_csv("../data/cleaned/resale_price_cleaned.csv")
+df_income = pd.read_csv("resale_price_cleaned.csv")
 
 def get_flat_type(flat_type):
     if flat_type == "1 Room":
